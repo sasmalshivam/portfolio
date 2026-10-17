@@ -66,7 +66,7 @@ export const PORTFOLIO_DATA = {
     location: "Jamshedpur & Bhubaneswar, India",
     availability: "Available for Full-time Roles & Internships",
     resumeUrl: "/resume.pdf",
-    photoUrl: "/images/me.jpg",
+    photoUrl: "/images/me.png",
     stats: [
       { label: "CGPA", value: "8.5/10" },
       { label: "Hackathon Win", value: "Rank #1" },

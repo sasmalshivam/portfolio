@@ -133,6 +133,17 @@ input, textarea {
   animation: scan 3s linear infinite;
 }
 
+/* Halftone Dither Dot & Grain Pattern */
+.halftone-pattern {
+  background-image: radial-gradient(circle, #ffffff 1.2px, transparent 1.2px);
+  background-size: 5px 5px;
+}
+
+.vignette-bottom {
+  mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+  -webkit-mask-image: linear-gradient(to bottom, black 65%, transparent 98%);
+}
+
 /* Pause marquee on hover */
 .pause-marquee:hover .animate-marquee,
 .pause-marquee:hover .animate-marquee-reverse {

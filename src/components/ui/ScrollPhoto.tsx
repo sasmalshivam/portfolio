@@ -23,19 +23,19 @@ export default function ScrollPhoto() {
 
   // Scroll mapping for Desktop:
   // 0.0 -> Hero (large centered-right, floating, green glow)
-  // 0.15 - 0.40 -> About (scales down, moves side, rotates in 3D -15deg)
+  // 0.15 - 0.40 -> About (scales down, moves side, rotates in 3D -14deg)
   // 0.50 - 1.0 -> Projects & Beyond (pins as small circular cyber avatar in corner)
   const photoScale = useTransform(scrollYProgress, [0, 0.25, 0.55, 0.75], [1, 0.85, 0.45, 0.35]);
   const photoRotateY = useTransform(scrollYProgress, [0, 0.25, 0.5], [0, -14, 0]);
   const photoRotateZ = useTransform(scrollYProgress, [0, 0.25, 0.5], [0, 2, 0]);
-  
+
   // Dynamic positioning across scroll
   const topPos = useTransform(
     scrollYProgress,
     [0, 0.25, 0.55, 0.8],
     ["20%", "26%", "16px", "16px"]
   );
-  
+
   const rightPos = useTransform(
     scrollYProgress,
     [0, 0.25, 0.55, 0.8],
@@ -53,7 +53,7 @@ export default function ScrollPhoto() {
     scrollYProgress,
     [0, 0.3, 0.7],
     [
-      "radial-gradient(circle, rgba(57, 255, 20, 0.4) 0%, rgba(0, 240, 255, 0.15) 50%, transparent 70%)",
+      "radial-gradient(circle, rgba(57, 255, 20, 0.45) 0%, rgba(0, 240, 255, 0.18) 50%, transparent 70%)",
       "radial-gradient(circle, rgba(0, 240, 255, 0.45) 0%, rgba(0, 102, 255, 0.2) 50%, transparent 70%)",
       "radial-gradient(circle, rgba(0, 240, 255, 0.35) 0%, rgba(57, 255, 20, 0.15) 50%, transparent 70%)",
     ]
@@ -88,8 +88,8 @@ export default function ScrollPhoto() {
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left - rect.width / 2;
     const y = e.clientY - rect.top - rect.height / 2;
-    mouseX.set((x / (rect.width / 2)) * 12);
-    mouseY.set(-(y / (rect.height / 2)) * 12);
+    mouseX.set((x / (rect.width / 2)) * 10);
+    mouseY.set(-(y / (rect.height / 2)) * 10);
   };
 
   const handleMouseLeave = () => {
@@ -98,23 +98,24 @@ export default function ScrollPhoto() {
     setIsHovered(false);
   };
 
-  // If user prefers reduced motion or is on small mobile screen, provide clean static presentation
+  // Static Fallback
   if (reducedMotion) {
     return (
       <div className="hidden lg:block absolute top-28 right-12 z-20 w-72 h-96 rounded-3xl overflow-hidden border border-neon-green/40 shadow-neon-green">
         <Image
-          src="/images/me.jpg"
+          src="/images/me.png"
           alt="Sibam Sasmal Profile"
           fill
           priority
           sizes="288px"
-          className="object-cover object-top"
+          className="object-cover object-top filter contrast-125 grayscale"
         />
+        <div className="absolute inset-0 halftone-pattern opacity-30 pointer-events-none" />
       </div>
     );
   }
 
-  // Mobile layout: render inline in the hero section cleanly
+  // Mobile layout
   if (isMobile) {
     return (
       <div className="w-full flex justify-center py-6 z-20">
@@ -122,19 +123,21 @@ export default function ScrollPhoto() {
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
-          className="relative w-48 h-60 sm:w-56 sm:h-72 rounded-3xl overflow-hidden border-2 border-neon-green/60 shadow-neon-green bg-surfaceCard"
+          className="relative w-48 h-60 sm:w-56 sm:h-72 rounded-3xl overflow-hidden border-2 border-neon-green/60 shadow-neon-green bg-black"
         >
-          {/* Subtle Glow backdrop */}
           <div className="absolute -inset-2 bg-gradient-to-tr from-neon-green/30 to-neon-blue/30 blur-xl opacity-75 pointer-events-none" />
-          
+
           <Image
-            src="/images/me.jpg"
+            src="/images/me.png"
             alt="Sibam Sasmal Profile"
             fill
             priority
             sizes="(max-width: 768px) 224px, 256px"
-            className="object-cover object-top transition-transform duration-500"
+            className="object-cover object-top filter contrast-110"
           />
+
+          {/* Halftone grain overlay */}
+          <div className="absolute inset-0 halftone-pattern opacity-25 mix-blend-overlay pointer-events-none" />
 
           {/* Cyber scanline */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-green/20 to-transparent h-16 w-full animate-scan pointer-events-none" />
@@ -198,9 +201,9 @@ export default function ScrollPhoto() {
         }}
         className="relative w-[300px] h-[390px] xl:w-[340px] xl:h-[440px] overflow-hidden border-2 bg-black shadow-2xl backdrop-blur-md"
       >
-        {/* Profile Image with Next/Image */}
+        {/* Transparent Cutout Head & Shoulders Photo */}
         <Image
-          src="/images/me.jpg"
+          src="/images/me.png"
           alt="Sibam Sasmal - Full Stack & AI/ML Developer"
           fill
           priority
@@ -208,27 +211,32 @@ export default function ScrollPhoto() {
           className="object-cover object-top transition-all duration-500 group-hover:scale-105"
         />
 
-        {/* 3. Cyber Duotone Gradient Overlay (fades out on hover for full vibrancy) */}
+        {/* 3. Halftone Dither Grain Texture Layer (gives the cinematic grain) */}
+        <div className="absolute inset-0 halftone-pattern opacity-30 mix-blend-overlay pointer-events-none transition-opacity duration-300 group-hover:opacity-15" />
+
+        {/* 4. Cyber Duotone Gradient Overlay */}
         <div
           className={`absolute inset-0 bg-gradient-to-tr from-neon-green/20 via-transparent to-neon-blue/25 mix-blend-color-dodge transition-opacity duration-500 pointer-events-none ${
-            isHovered ? "opacity-0" : "opacity-75"
+            isHovered ? "opacity-0" : "opacity-60"
           }`}
         />
 
-        {/* 4. Cyber Scanline Sweep Animation */}
+        {/* 5. Cyber Scanline Sweep Animation */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-neon-green/25 to-transparent h-20 w-full animate-scan pointer-events-none" />
 
-        {/* 5. Neon Rim Light Accents */}
+        {/* 6. Neon Rim Light Accents */}
         <div className="absolute inset-0 rounded-[inherit] border border-neon-blue/30 pointer-events-none" />
         <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-neon-green via-neon-blue to-neon-green opacity-80" />
 
-        {/* 6. Corner Cyber Tech Marks */}
+        {/* 7. Corner Cyber Tech Marks */}
         <div className="absolute top-2 left-2 w-2.5 h-2.5 border-t-2 border-l-2 border-neon-green pointer-events-none" />
         <div className="absolute top-2 right-2 w-2.5 h-2.5 border-t-2 border-r-2 border-neon-blue pointer-events-none" />
         <div className="absolute bottom-2 left-2 w-2.5 h-2.5 border-b-2 border-l-2 border-neon-blue pointer-events-none" />
         <div className="absolute bottom-2 right-2 w-2.5 h-2.5 border-b-2 border-r-2 border-neon-green pointer-events-none" />
+
+        {/* 8. Bottom vignette fade */}
+        <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-black via-black/70 to-transparent pointer-events-none" />
       </motion.div>
     </motion.div>
   );
 }
-
