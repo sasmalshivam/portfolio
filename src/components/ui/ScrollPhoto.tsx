@@ -161,7 +161,7 @@ export default function ScrollPhoto() {
       onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={handleMouseLeave}
-      className="cursor-pointer group origin-top-right transition-shadow duration-300"
+      className="cursor-default group origin-top-right transition-shadow duration-300"
     >
       {/* 1. Neon Aura Glow Behind Photo (shifts green -> cyan -> blue) */}
       <motion.div

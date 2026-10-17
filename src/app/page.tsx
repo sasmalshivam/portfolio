@@ -1,7 +1,6 @@
 import React from "react";
 import SceneWrapper from "@/components/canvas/SceneWrapper";
 import SmoothScrollProvider from "@/components/providers/SmoothScrollProvider";
-import CustomCursor from "@/components/ui/CustomCursor";
 import Preloader from "@/components/ui/Preloader";
 import ScrollPhoto from "@/components/ui/ScrollPhoto";
 import Navbar from "@/components/ui/Navbar";
@@ -18,8 +17,7 @@ export default function Home() {
       {/* Interactive 3D Cyber Matrix Background */}
       <SceneWrapper />
 
-      {/* Visual Enhancers */}
-      <CustomCursor />
+      {/* Preloader */}
       <Preloader />
 
       {/* Dynamic Scroll-Driven Profile Photo */}

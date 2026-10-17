@@ -26,6 +26,15 @@ body {
   color: #FFFFFF;
   overflow-x: hidden;
   font-family: var(--font-inter), -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  cursor: default;
+}
+
+a, button, [role="button"], input[type="submit"], input[type="button"] {
+  cursor: pointer;
+}
+
+input, textarea {
+  cursor: text;
 }
 
 /* Neon Text Selection */
