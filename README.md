@@ -6,7 +6,12 @@ Built specifically for **Sibam Sasmal** (Full Stack & AI/ML Developer, NIST Univ
 
 ---
 
-## ✨ Features & Architecture
+## 🌐 Live Links
+
+* **Live Production URL:** [https://portfolio-zeta-black-kx0awot2y3.vercel.app](https://portfolio-zeta-black-kx0awot2y3.vercel.app)
+* **GitHub Repository:** [https://github.com/sasmalshivam/portfolio](https://github.com/sasmalshivam/portfolio)
+
+---
 
 * **🎨 3D WebGL Canvas (`@react-three/fiber` & `@react-three/drei`):**
   * Persistent fixed background canvas with dynamic scroll-linked camera movement.
