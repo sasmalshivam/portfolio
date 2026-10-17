@@ -15,45 +15,44 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const viewport: Viewport = {
-  themeColor: "#09090b",
+  themeColor: "#000000",
   width: "device-width",
   initialScale: 1,
 };
 
 export const metadata: Metadata = {
-  title: "Sibam Sasmal | Full Stack & AI/ML Developer Portfolio",
+  title: "Sibam Sasmal | 3D Cyber Portfolio - Full Stack & AI/ML Developer",
   description:
-    "Personal portfolio of Sibam Sasmal – Full Stack & AI/ML Developer specializing in scalable web systems and real-time computer vision pipelines. Winner of Hacktriad 2.0.",
+    "Cyber 3D Portfolio of Sibam Sasmal – Full Stack & AI/ML Developer specializing in scalable web systems and real-time computer vision pipelines. Winner of Hacktriad 2.0.",
   keywords: [
     "Sibam Sasmal",
     "Full Stack Developer",
     "AI/ML Developer",
     "Computer Vision",
-    "Next.js",
+    "Next.js 14",
     "React.js",
     "Python",
-    "Django",
-    "OpenCV",
+    "Three.js",
+    "Cyberpunk",
     "Portfolio",
-    "3D Web",
   ],
-  authors: [{ name: "Sibam Sasmal", url: "https://github.com/sasmalshivame" }],
+  authors: [{ name: "Sibam Sasmal", url: "https://github.com/sasmalshivam" }],
   creator: "Sibam Sasmal",
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://portfolio-sasmalshivame.vercel.app",
-    title: "Sibam Sasmal | Full Stack & AI/ML Developer Portfolio",
+    url: "https://portfolio-zeta-black-kx0awot2y3.vercel.app",
+    title: "Sibam Sasmal | 3D Cyber Portfolio - Full Stack & AI/ML Developer",
     description:
-      "Explore the 3D portfolio of Sibam Sasmal, featuring industrial safety computer vision systems, full-stack applications, and hackathon-winning solutions.",
-    siteName: "Sibam Sasmal Portfolio",
+      "Explore the 3D cyber portfolio of Sibam Sasmal with interactive 3D WebGL scenes, scroll-driven profile animations, and deep learning detectors.",
+    siteName: "Sibam Sasmal Cyber Portfolio",
   },
   twitter: {
     card: "summary_large_image",
     title: "Sibam Sasmal | Full Stack & AI/ML Developer",
     description:
-      "Full Stack & AI/ML Developer portfolio featuring 3D interactive graphics, deep learning models, and production web systems.",
-    creator: "@sasmalshivame",
+      "3D Cyber portfolio featuring real-time WebGL, scroll-driven profile dynamics, and production web systems.",
+    creator: "@sasmalshivam",
   },
   robots: {
     index: true,
@@ -69,7 +68,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark scroll-smooth">
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-background text-foreground antialiased selection:bg-violet-500/30 selection:text-white`}
+        className={`${inter.variable} ${spaceGrotesk.variable} font-sans bg-black text-white antialiased selection:bg-neon-green/30 selection:text-white`}
       >
         {children}
       </body>

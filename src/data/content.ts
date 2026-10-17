@@ -66,6 +66,7 @@ export const PORTFOLIO_DATA = {
     location: "Jamshedpur & Bhubaneswar, India",
     availability: "Available for Full-time Roles & Internships",
     resumeUrl: "/resume.pdf",
+    photoUrl: "/images/me.jpg",
     stats: [
       { label: "CGPA", value: "8.5/10" },
       { label: "Hackathon Win", value: "Rank #1" },
@@ -75,7 +76,7 @@ export const PORTFOLIO_DATA = {
   },
 
   socials: {
-    github: "https://github.com/sasmalshivame",
+    github: "https://github.com/sasmalshivam",
     linkedin: "https://linkedin.com",
     twitter: "https://twitter.com",
     email: "mailto:shivamsasmal7@gmail.com",

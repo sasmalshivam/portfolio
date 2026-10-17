@@ -23,7 +23,7 @@ export default function TiltCard({ children, className = "" }: TiltCardProps) {
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rX = ((y - centerY) / centerY) * -10; // max 10 deg tilt
+    const rX = ((y - centerY) / centerY) * -10;
     const rY = ((x - centerX) / centerX) * 10;
 
     setRotateX(rX);
@@ -57,17 +57,16 @@ export default function TiltCard({ children, className = "" }: TiltCardProps) {
         damping: 18,
         stiffness: 220,
       }}
-      className={`relative rounded-3xl overflow-hidden glass transition-colors border border-white/10 hover:border-violet-500/50 ${className}`}
+      className={`relative rounded-3xl overflow-hidden bg-surfaceCard/90 border border-zinc-800/90 hover:border-neon-green/50 transition-colors shadow-2xl hover:shadow-[0_0_30px_rgba(57,255,20,0.15)] ${className}`}
     >
-      {/* Dynamic Cursor Spotlight Effect */}
+      {/* Neon Spotlight Glow */}
       <div
         className="pointer-events-none absolute -inset-px opacity-0 group-hover:opacity-100 transition-opacity duration-300"
         style={{
-          background: `radial-gradient(600px circle at ${glowPos.x}% ${glowPos.y}%, rgba(139, 92, 246, 0.15), transparent 40%)`,
+          background: `radial-gradient(600px circle at ${glowPos.x}% ${glowPos.y}%, rgba(57, 255, 20, 0.12), transparent 40%)`,
         }}
       />
       {children}
     </motion.div>
   );
 }
-

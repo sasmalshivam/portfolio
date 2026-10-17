@@ -11,13 +11,11 @@ export default function CustomCursor() {
   const cursorX = useMotionValue(-100);
   const cursorY = useMotionValue(-100);
 
-  // Smooth trailing spring for the outer ring
   const springConfig = { damping: 25, stiffness: 350, mass: 0.5 };
   const smoothX = useSpring(cursorX, springConfig);
   const smoothY = useSpring(cursorY, springConfig);
 
   useEffect(() => {
-    // Check if device supports fine hover pointer (disable on touch screens)
     const isTouchDevice = !window.matchMedia("(pointer: fine)").matches;
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -36,7 +34,6 @@ export default function CustomCursor() {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    // Track clickable elements
     const handleMouseOver = (e: MouseEvent) => {
       const target = e.target as HTMLElement;
       if (
@@ -74,9 +71,9 @@ export default function CustomCursor() {
 
   return (
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden">
-      {/* Outer Spring Follower Ring */}
+      {/* Outer Cyan / Neon Blue Trailing Ring */}
       <motion.div
-        className="absolute top-0 left-0 rounded-full border border-violet-400/80 pointer-events-none mix-blend-screen"
+        className="absolute top-0 left-0 rounded-full border border-cyan-400 pointer-events-none"
         style={{
           x: smoothX,
           y: smoothY,
@@ -87,16 +84,19 @@ export default function CustomCursor() {
           width: isHovered ? 56 : isClicking ? 28 : 36,
           height: isHovered ? 56 : isClicking ? 28 : 36,
           backgroundColor: isHovered
-            ? "rgba(139, 92, 246, 0.15)"
-            : "rgba(139, 92, 246, 0.04)",
-          borderColor: isHovered ? "rgba(34, 211, 238, 0.9)" : "rgba(167, 139, 250, 0.6)",
+            ? "rgba(0, 240, 255, 0.15)"
+            : "rgba(0, 240, 255, 0.04)",
+          borderColor: isHovered ? "#39FF14" : "#00F0FF",
+          boxShadow: isHovered
+            ? "0 0 20px rgba(57, 255, 20, 0.6)"
+            : "0 0 10px rgba(0, 240, 255, 0.3)",
         }}
         transition={{ type: "spring", damping: 20, stiffness: 300, mass: 0.2 }}
       />
 
-      {/* Inner Dot */}
+      {/* Inner Neon Green Dot */}
       <motion.div
-        className="absolute top-0 left-0 rounded-full bg-cyan-400 pointer-events-none"
+        className="absolute top-0 left-0 rounded-full bg-neon-green pointer-events-none"
         style={{
           x: cursorX,
           y: cursorY,
@@ -106,14 +106,13 @@ export default function CustomCursor() {
         animate={{
           width: isHovered ? 8 : isClicking ? 4 : 6,
           height: isHovered ? 8 : isClicking ? 4 : 6,
-          backgroundColor: isHovered ? "#22d3ee" : "#a78bfa",
+          backgroundColor: isHovered ? "#00F0FF" : "#39FF14",
           boxShadow: isHovered
-            ? "0 0 12px rgba(34, 211, 238, 0.9)"
-            : "0 0 8px rgba(167, 139, 250, 0.8)",
+            ? "0 0 14px rgba(0, 240, 255, 0.9)"
+            : "0 0 12px rgba(57, 255, 20, 0.9)",
         }}
         transition={{ duration: 0.1 }}
       />
     </div>
   );
 }
-
